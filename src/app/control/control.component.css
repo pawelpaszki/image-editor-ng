@@ -1,3 +1,19 @@
 .controls {
   display: flex;
+  /* justify-content: space-between; */
+}
+
+.controls > * {
+  margin: 0 5px;
+}
+
+div {
+  color: white;
+}
+
+.zoomContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
 }

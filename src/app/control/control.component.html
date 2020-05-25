@@ -1,3 +1,32 @@
 <div class="controls">
-  <button (click)="loadImage" class="btn"><i class="fa fa-folder-open"></i></button>
+  <button (click)="loadImage" class="btn" title="load image"><i class="fa fa-folder-open"></i></button>
+  <button (click)="save" class="btn" title="save image"><i class="fa fa-save"></i></button>
+  <!-- mode form -->
+  <form [formGroup]="modeForm" 
+    title="In highlight mode you can select any part of a loaded image and save it as another image. In insert mode you can insert image and embed it into another image and then save">
+    <div>
+      Select mode <i class="fa fa-question-circle"></i>
+    </div>
+    <div>
+      <input (change)="updateMode('insert')" id="mode" type="radio" class="custom-control-input" value="insert" name="mode" formControlName="mode">
+      <label class="custom-control-label" for="mode">insert</label>
+    </div>
+
+    <div>
+      <input (change)="updateMode('highlight')" id="highlight" type="radio" class="custom-control-input" value="highlight" name="mode" formControlName="mode">
+      <label class="custom-control-label" for="highlight">highlight</label>
+    </div>
+  </form>
+  <!-- end of mode form -->
+  <!-- zoom dropdown -->
+  <form [formGroup]="form">
+        
+    <div class="form-group zoomContainer">
+      <label title="increase/ decrease zoom of the main image">Image zoom <i class="fa fa-question-circle"></i></label>
+      <select formControlName="zoom" class="form-control" (change)="changeZoom($event)">
+          <option *ngFor="let zoom of zoomOptions">{{zoom}}</option>
+      </select>
+    </div>
+  </form>
+  <!-- end of zoom dropdown -->
 </div>

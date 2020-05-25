@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { ControlComponent } from './control/control.component';
 import { StatsComponent } from './stats/stats.component';
 import { FrameComponent } from './frame/frame.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,9 @@ import { FrameComponent } from './frame/frame.component';
     FrameComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

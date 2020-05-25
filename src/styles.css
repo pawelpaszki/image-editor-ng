@@ -22,7 +22,7 @@ body {
   border: none;
   color: white;
   font-size: 30px;
-  cursor: pointer; /* Mouse pointer on hover */
+  cursor: pointer;
 }
 
 /* Darker background on mouse-over */
