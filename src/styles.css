@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  font-family: sans-serif;
+  margin: 0;
+  background-image: linear-gradient(225deg, #004E92 0%, #000428 100%);
+}
+
+.stats, .control {
+  padding: 10px;
+  margin: 10px 20px 10px 20px;
+}
+
+.frame {
+  margin: 10px 20px 10px 20px;
+  flex-grow: 9999;
+  background: white;
+}
+
+/* Style buttons */
+.btn {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 30px;
+  cursor: pointer; /* Mouse pointer on hover */
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  color: lightblue;
+}
