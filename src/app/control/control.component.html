@@ -1,6 +1,7 @@
 <div class="controls">
   <button (click)="loadImage" class="btn" title="load image"><i class="fa fa-folder-open"></i></button>
   <button (click)="save" class="btn" title="save image"><i class="fa fa-save"></i></button>
+
   <!-- mode form -->
   <form [formGroup]="modeForm" 
     title="In highlight mode you can select any part of a loaded image and save it as another image. In insert mode you can insert image and embed it into another image and then save">
@@ -18,15 +19,39 @@
     </div>
   </form>
   <!-- end of mode form -->
+  
   <!-- zoom dropdown -->
-  <form [formGroup]="form">
+  <form [formGroup]="zoomForm">
         
-    <div class="form-group zoomContainer">
+    <div class="form-group dropdownContainer">
       <label title="increase/ decrease zoom of the main image">Image zoom <i class="fa fa-question-circle"></i></label>
-      <select formControlName="zoom" class="form-control" (change)="changeZoom($event)">
+      <select formControlName="zoomForm" class="form-control" (change)="changeZoom($event)">
           <option *ngFor="let zoom of zoomOptions">{{zoom}}</option>
       </select>
     </div>
   </form>
   <!-- end of zoom dropdown -->
+  
+  <!-- highlight dropdown -->
+  <form [formGroup]="highlightForm"> 
+    <div class="form-group dropdownContainer">
+      <label title="select highlight mode (rectangular, drag pixels (various sizes) or flood)">Highlight Mode <i class="fa fa-question-circle"></i></label>
+      <select formControlName="highlightForm" class="form-control" (change)="changeHighlightMode($event)">
+          <option *ngFor="let highlight of highlightOptions">{{highlight}}</option>
+      </select>
+    </div>
+  </form>
+  <!-- end of highlight dropdown -->
+
+  <!-- target dropdown -->
+  <form [formGroup]="targetForm" *ngIf="thumbnailSrc !== 'assets/img/thumbnail.png'"> 
+    <div class="form-group dropdownContainer">
+      <label title="select pasted image to edit it">Target Image <i class="fa fa-question-circle"></i></label>
+      <select formControlName="targetForm" class="form-control" (change)="changeTarget($event)">
+          <option *ngFor="let target of targetOptions">{{target}}</option>
+      </select>
+    </div>
+  </form>
+  <!-- end of target dropdown -->
+  <img class="thumb" *ngIf="thumbnailSrc !== 'assets/img/thumbnail.png'" src={{thumbnailSrc}} title="currently edited pasted image">
 </div>

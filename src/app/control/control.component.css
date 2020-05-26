@@ -11,9 +11,14 @@ div {
   color: white;
 }
 
-.zoomContainer {
+.dropdownContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   height: 100%;
+}
+
+.thumb {
+  width: 60px;
+  height: 60px;
 }
