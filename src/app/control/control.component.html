@@ -1,6 +1,6 @@
 <div class="controls">
-  <button (click)="loadImage" class="btn" title="load image"><i class="fa fa-folder-open"></i></button>
-  <button (click)="save" class="btn" title="save image"><i class="fa fa-save"></i></button>
+  <button (click)="loadImage()" class="btn" title="load image"><i class="fa fa-folder-open"></i></button>
+  <button (click)="save()" class="btn" title="save image"><i class="fa fa-save"></i></button>
 
   <!-- mode form -->
   <form [formGroup]="modeForm" 
@@ -26,7 +26,7 @@
     <div class="form-group dropdownContainer">
       <label title="increase/ decrease zoom of the main image">Image zoom <i class="fa fa-question-circle"></i></label>
       <select formControlName="zoomForm" class="form-control" (change)="changeZoom($event)">
-          <option *ngFor="let zoom of zoomOptions">{{zoom}}</option>
+        <option *ngFor="let zoom of zoomOptions">{{zoom}}</option>
       </select>
     </div>
   </form>
@@ -37,7 +37,7 @@
     <div class="form-group dropdownContainer">
       <label title="select highlight mode (rectangular, drag pixels (various sizes) or flood)">Highlight Mode <i class="fa fa-question-circle"></i></label>
       <select formControlName="highlightForm" class="form-control" (change)="changeHighlightMode($event)">
-          <option *ngFor="let highlight of highlightOptions">{{highlight}}</option>
+        <option *ngFor="let highlight of highlightOptions">{{highlight}}</option>
       </select>
     </div>
   </form>
@@ -48,10 +48,51 @@
     <div class="form-group dropdownContainer">
       <label title="select pasted image to edit it">Target Image <i class="fa fa-question-circle"></i></label>
       <select formControlName="targetForm" class="form-control" (change)="changeTarget($event)">
-          <option *ngFor="let target of targetOptions">{{target}}</option>
+        <option *ngFor="let target of targetOptions">{{target}}</option>
       </select>
     </div>
   </form>
   <!-- end of target dropdown -->
+  <!-- target thumbnail -->
   <img class="thumb" *ngIf="thumbnailSrc !== 'assets/img/thumbnail.png'" src={{thumbnailSrc}} title="currently edited pasted image">
+  <!-- end of target thumbnail -->
+  <!-- target dimentions -->
+  <div class="dimensions">
+    <label title="increase/ decrease targetted image dimensions (doesn't apply to the main background image)">Dimensions <i class="fa fa-question-circle"></i></label>
+    <div class="dimensionsInputs">
+      <div>w</div>
+      <input type="number" [(ngModel)]=inputWidth maxlength="4" size="4" (input)="checkWidth($event.target.value)">
+      <div>h</div>
+      <input type="number" [(ngModel)]=inpuHeight maxlength="4" size="4" (input)="checkHeight($event.target.value)">
+    </div>
+  </div>
+  <div class="dimensionsButtons">
+    <button (click)="resetThumb()" class="smallBtn btn" title="reset sizing values"><i class="fa fa-undo"></i></button>
+    <button (click)="resizeThumb()" class="smallBtn btn" title="resize currently targetted pasted image"><i class="fa fa-arrows-alt"></i></button>
+  </div>
+  <!-- end of target dimentions -->
+  <!-- target coordinates -->
+  <div class="dimensions">
+    <label title="X and Y position of currently targetted pasted image">Coordinates <i class="fa fa-question-circle"></i></label>
+    <div class="dimensionsInputs">
+      <div>x</div>
+      <input type="number" [(ngModel)]=inputX maxlength="4" size="4" (input)="checkWidth($event.target.value)">
+      <div>y</div>
+      <input type="number" [(ngModel)]=inputY maxlength="4" size="4" (input)="checkHeight($event.target.value)">
+    </div>
+  </div>
+  <div class="dimensionsButtons">
+    <button (click)="resetCoordinates()" class="smallBtn btn" title="reset x and y values"><i class="fa fa-undo"></i></button>
+    <button (click)="moveTarget()" class="smallBtn btn" title="move currently targetted pasted image"><i class="fa fa-arrows-alt"></i></button>
+  </div>
+  <!-- end of target coordinates -->
+  <!-- target rotation -->
+  <div class="dimensions">
+    <label title="Rotate image right by specified number of degrees">Rotate target <i class="fa fa-question-circle"></i></label>
+    <div class="rotationActions">
+      <input type="number" [(ngModel)]=rotate maxlength="3" size="3">
+      <button (click)="rotateTarget()" class="smallBtn btn" title="reset x and y values"><i class="material-icons">rotate_left</i></button>
+    </div>
+  </div>
+  <!-- end of target rotation -->
 </div>

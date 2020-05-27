@@ -9,7 +9,16 @@ import { FormGroup, FormControl} from '@angular/forms';
 })
 export class ControlComponent implements OnInit {
 
-  thumbnailSrc: string = 'assets/img/thumbnail.png';
+  thumbnailSrc: string = 'assets/img/thumb.png'; // change later to assets/img/thumbnail.png
+  inputWidth: number = 0;
+  inpuHeight: number = 0;
+  currentTargetThumbHeight: number = 0;
+  currentTargetThumbWidth: number = 0;
+  inputX: number = 0;
+  inputY: number = 0;
+  currentTargetX: number = 0;
+  currentTargetY: number = 0;
+  rotate: number = 0;
 
   constructor(public fb: FormBuilder) { }
 
@@ -56,5 +65,53 @@ export class ControlComponent implements OnInit {
 
   changeTarget(e) {
     console.log(e.target.value);
+  }
+
+  checkWidth(width: number): void {
+    // add logic to enable resize button
+    console.log(width);
+  }
+
+  checkHeight(height: number): void {  
+    // add logic to enable resize button
+    console.log(height);
+  }
+
+  loadImage() {
+    console.log("TBD - load image");
+  }
+
+  save() {
+    console.log("TBD - save");
+  }
+
+  resetThumb() {
+    console.log("TBD - resetThumb");
+  }
+
+  resizeThumb() {
+    console.log("TBD - resizeThumb");
+  }
+
+  resetCoordinates() {
+    console.log("TBD - resetCoordinates");
+  }
+
+  moveTarget() {
+    console.log("TBD - moveTarget");
+  }
+
+  checkX(x: number): void {
+    // add logic to enable move button
+    console.log(x);
+  }
+
+  checkY(y: number): void {  
+    // add logic to enable move button
+    console.log(y);
+  }
+
+  rotateTarget() {
+    console.log(this.rotate);
   }
 }
